@@ -1,50 +1,45 @@
 { pkgs, lib, config, inputs, ... }:
 
 {
-  # https://devenv.sh/basics/
+  # Définir une variable d'environnement
   env.GREET = "devenv";
 
-  # https://devenv.sh/packages/
+  # Inclure uniquement les packages nécessaires
   packages = [
     pkgs.git
-    pkgs.nodejs_18
-    pkgs.corepack
     pkgs.tmux
-   ];
+  ];
 
-  # https://devenv.sh/languages/
-  # languages.rust.enable = true;
-    languages.javascript.enable = true;
-  # https://devenv.sh/processes/
-  # processes.cargo-watch.exec = "cargo-watch";
+  # Activer JavaScript (Node.js sera automatiquement utilisé)
+  languages.javascript = {
+    enable = true;
+    package = pkgs.nodejs_18;
+    corepack ={
+      enable = true;
+    };
+  };
 
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
+  processes = {
+    aerial-api.exec = "cd ./api-aerial/src && npm run dev";
+    dashboard-api.exec = "cd ./api-dashboard/src && npm run dev";
+    front-resa.exec = "cd ./front-reservation/src && npm run dev";
+  };
 
-  # https://devenv.sh/scripts/
+  # Script personnalisé
   scripts.hello.exec = ''
     echo hello from $GREET
   '';
 
+  # Commandes à exécuter lors de l'entrée dans le shell
   enterShell = ''
     hello
     git --version
+    make
   '';
 
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
-  # https://devenv.sh/tests/
+  # Commandes pour les tests
   enterTest = ''
     echo "Running tests"
     git --version | grep --color=auto "${pkgs.git.version}"
   '';
-
-  # https://devenv.sh/pre-commit-hooks/
-  # pre-commit.hooks.shellcheck.enable = true;
-
-  # See full reference at https://devenv.sh/reference/options/
 }
