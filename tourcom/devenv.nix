@@ -24,7 +24,12 @@
   scripts.hello.exec = ''
     echo hello from $GREET
   '';
-
+  processes = {
+    api-adhesion.exec = "cd ./api-adhesion/src && npm run dev";
+    api-mobile-agence.exec = "cd ./api-tourcom-mobile/src && npm run dev";
+    api-mobile-users.exec = "cd ./api-tourcom-users/src && npm run dev";
+    front-adhesion.exec = "cd ./front-adhesion/src && npm run dev";
+  };
   enterShell = ''
     hello
     git --version
