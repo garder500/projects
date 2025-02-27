@@ -8,7 +8,6 @@
   packages = [
     pkgs.git
     pkgs.nodejs
-    pkgs.tmux
      ];
 
   # https://devenv.sh/languages/
@@ -28,7 +27,7 @@
     api-adhesion.exec = "cd ./api-adhesion/src && npm run dev";
     api-mobile-agence.exec = "cd ./api-tourcom-mobile/src && npm run dev";
     api-mobile-users.exec = "cd ./api-tourcom-users/src && npm run dev";
-    front-adhesion.exec = "cd ./front-adhesion/src && npm run dev";
+    front-adhesion.exec = "export NODE_OPTIONS=--openssl-legacy-provider cd ./front-adhesion/src && npm run dev";
   };
   enterShell = ''
     hello
