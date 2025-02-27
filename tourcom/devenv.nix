@@ -33,6 +33,7 @@
   enterShell = ''
     hello
     git --version
+    make
   '';
 
   # https://devenv.sh/tasks/
