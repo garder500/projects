@@ -10,8 +10,12 @@ services:
       - "3306:3306"
     volumes:
       - data:/var/lib/mysql
+    networks:
+      - mariadb_network
 
 volumes:
   data:
 
-
+networks:
+  mariadb_network:
+    driver: bridge
