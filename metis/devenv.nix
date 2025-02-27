@@ -7,7 +7,6 @@
   # Inclure uniquement les packages nécessaires
   packages = [
     pkgs.git
-    pkgs.tmux
   ];
 
   # Activer JavaScript (Node.js sera automatiquement utilisé)
