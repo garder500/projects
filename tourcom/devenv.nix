@@ -17,7 +17,26 @@
 
   # https://devenv.sh/services/
   # services.postgres.enable = true;
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    initialDatabases = [
+      { name = "mobile_users"; }
+      { name = "mobile_agences"; }
+    ];
+    ensureUsers = [
+       {
+        name = "devenv";
+        password = "devenv";
+        ensurePermissions = {
+          "mobile_agences.*" = "ALL PRIVILEGES";
+          "mobile_users.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
 
+
+  };
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
     echo hello from $GREET
@@ -26,7 +45,7 @@
     api-adhesion.exec = "cd ./api-adhesion/src && npm run dev";
     api-mobile-agence.exec = "cd ./api-tourcom-mobile/src && npm run dev";
     api-mobile-users.exec = "cd ./api-tourcom-users/src && npm run dev";
-    front-adhesion.exec = "export NODE_OPTIONS=--openssl-legacy-provider cd ./front-adhesion/src && npm run dev";
+    front-adhesion.exec = "export NODE_OPTIONS=--openssl-legacy-provider && cd ./front-adhesion/src && npm run dev";
   };
   enterShell = ''
     hello
