@@ -29,8 +29,7 @@
         name = "devenv";
         password = "devenv";
         ensurePermissions = {
-          "mobile_agences.*" = "ALL PRIVILEGES";
-          "mobile_users.*" = "ALL PRIVILEGES";
+          "*.*" = "ALL PRIVILEGES";
         };
       }
     ];
