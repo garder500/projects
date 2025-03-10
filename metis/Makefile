@@ -28,3 +28,9 @@ clean-branches:
 			echo "$$dir n'est pas un dépôt Git"; \
 		fi; \
 	done
+
+pull:
+	@git pull git@gitlab.com:GroupeAdnenis/metis-connect/api-aerial.git
+	@git pull git@gitlab.com:GroupeAdnenis/metis-connect/api-dashboard.git
+	@git pull git@gitlab.com:GroupeAdnenis/metis-connect/front-dashboard.git
+	@git pull git@gitlab.com:GroupeAdnenis/metis-connect/front-reservation.git
