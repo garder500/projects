@@ -47,3 +47,9 @@ launch:
 			echo "$$dir n'est pas un dépôt Git"; \
 		fi; \
 	done
+
+pull:
+	@git clone https://gitlab-oxidized.as51985.net/tourcom/front-adhesion.git
+	@git clone https://gitlab-oxidized.as51985.net/dev-adenis/api-tourcom-users.git
+	@git clone https://gitlab-oxidized.as51985.net/dev-adenis/api-tourcom-mobile.git
+	@git clone https://gitlab-oxidized.as51985.net/tourcom/api-adhesion.git
