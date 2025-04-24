@@ -11,7 +11,13 @@
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
-  languages.javascript.enable = true;
+  languages.javascript = {
+    enable = true;
+    package = pkgs.nodejs_18;
+    corepack ={
+      enable = true;
+    };
+  };
   # https://devenv.sh/processes/
   # processes.cargo-watch.exec = "cargo-watch";
 

@@ -12,8 +12,8 @@
   # Activer JavaScript (Node.js sera automatiquement utilisé)
   languages.javascript = {
     enable = true;
-    package = pkgs.nodejs_18;
-    corepack ={
+    package = pkgs.nodejs_20;
+    corepack = {
       enable = true;
     };
   };
@@ -24,14 +24,11 @@
     front-resa.exec = "cd ./front-reservation/src && npm run dev";
   };
 
-  # Script personnalisé
-  scripts.hello.exec = ''
-    echo hello from $GREET
-  '';
+
+
 
   # Commandes à exécuter lors de l'entrée dans le shell
   enterShell = ''
-    hello
     git --version
     make
   '';

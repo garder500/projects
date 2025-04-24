@@ -1,0 +1,4 @@
+^.devenv/*
+metis/.devenv.flake.nix
+metis/.devenv*
+tourcom/.devenv*
